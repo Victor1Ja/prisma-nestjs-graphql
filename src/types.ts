@@ -29,7 +29,9 @@ export type TypeRecord = Partial<{
   graphqlModule: string;
 }>;
 
-export type GeneratorConfiguration = ReturnType<typeof createConfig>;
+export type GeneratorConfiguration = ReturnType<typeof createConfig> & {
+  omitAggregateTypes: boolean;
+};
 
 export type EventArguments = {
   schema: Schema;

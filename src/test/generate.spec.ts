@@ -2487,3 +2487,23 @@ describe('unsafeCompatibleWhereUniqueInput', () => {
     expect(emailName.property?.hasExclamationToken).toBe(true);
   });
 });
+
+describe('omit aggregate types', () => {
+  before(async () => {
+    ({ project, sourceFiles } = await testGenerate({
+      options: [
+        `outputFilePattern = "{name}.{type}.ts"`,
+        `omitAggregateTypes = true`,
+      ],
+      schema: `model User { id Int @id }`,
+    }));
+  });
+
+  it('should not emit aggregate related files', () => {
+    const filePaths = sourceFiles.map(s => s.getFilePath().slice(1));
+    const aggregateFiles = filePaths.filter(p =>
+      /-aggregate\.|aggregate-|group-by/.test(p),
+    );
+    expect(aggregateFiles).toHaveLength(0);
+  });
+});
