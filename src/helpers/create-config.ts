@@ -132,6 +132,7 @@ export function createConfig(data: Record<string, unknown>) {
     emitCompiled: toBoolean(config.emitCompiled),
     emitBlocks: createEmitBlocks(config.emitBlocks as EmitBlocksOption[]),
     omitModelsCount: toBoolean(config.omitModelsCount),
+    omitAggregateTypes: toBoolean(config.omitAggregateTypes),
     $warnings,
     fields,
     purgeOutput: toBoolean(config.purgeOutput),

@@ -130,8 +130,14 @@ Default: `["args", "inputs", "outputs", "models", "enums"]`
 
 #### `omitModelsCount`
 
-Omit `_count` field from models.  
-Type: `boolean`  
+Omit `_count` field from models.
+Type: `boolean`
+Default: `false`
+
+#### `omitAggregateTypes`
+
+Skip generation of aggregate output and argument types.
+Type: `boolean`
 Default: `false`
 
 #### `purgeOutput`

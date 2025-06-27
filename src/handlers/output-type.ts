@@ -34,6 +34,9 @@ export function outputType(outputType: OutputType, args: EventArguments) {
   outputType.name = getOutputTypeName(outputType.name);
 
   if (isAggregateOutput) {
+    if (config.omitAggregateTypes) {
+      return;
+    }
     eventEmitter.emitSync('AggregateOutput', { ...args, outputType });
   }
 

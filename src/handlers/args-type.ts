@@ -27,6 +27,13 @@ export function argsType(field: SchemaField, args: EventArguments) {
     }
   }
 
+  if (
+    args.config.omitAggregateTypes &&
+    (className.endsWith('AggregateArgs') || className.endsWith('GroupByArgs'))
+  ) {
+    return;
+  }
+
   const inputType: InputType = {
     // eslint-disable-next-line unicorn/no-null
     constraints: { maxNumFields: null, minNumFields: null },

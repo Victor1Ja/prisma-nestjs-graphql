@@ -8,6 +8,9 @@ import { EventArguments, InputType, OutputType } from '../types';
 export function createAggregateInput(
   args: EventArguments & { outputType: OutputType },
 ) {
+  if (args.config.omitAggregateTypes) {
+    return;
+  }
   const { eventEmitter, outputType } = args;
   const className = `${outputType.name}Input`;
 
